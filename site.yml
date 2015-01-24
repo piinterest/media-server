@@ -1,1 +1,9 @@
 #this is the main playbook
+---
+
+- name: apply common configuration to all hosts
+  hosts: all
+  remote_user: root
+
+  roles:
+    - common
