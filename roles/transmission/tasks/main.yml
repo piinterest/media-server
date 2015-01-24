@@ -1,3 +1,5 @@
 ---
 
+- name: install transmision daemon
+  apt: name=transmission-daemon state=present update_cache=yes
 
