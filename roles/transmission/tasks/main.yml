@@ -3,3 +3,19 @@
 - name: install transmision daemon
   apt: name=transmission-daemon state=present update_cache=yes
 
+- name: add transmission to media group
+  user: name=debian-transmission groups=media append=yes
+
+- name: stop transmission before editing settings
+  service: name=transmission-daemon state=stopped
+
+- name: copy transmission config into place
+  template: >
+            src=settings.json.j2
+            dest=/etc//transmission-daemon/settings.json
+            mode=0600 
+            group=debian-transmission
+            owner=debian-transmission
+
+- name: start transsmission back up
+  service: name=transmission-daemon state=started

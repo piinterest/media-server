@@ -4,6 +4,6 @@
   group: name=media state=present
 
 - name: create media directory
-  file: path=/var/media state=directory
+  file: path=/var/media state=directory mode=0660 group=media
 
 

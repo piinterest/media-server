@@ -5,5 +5,16 @@
   hosts: all
   remote_user: root
 
+  vars_prompt:
+    - name: "rpc_username"
+      prompt: Enter a username for Transmission admin"
+      private: no
+
+    - name: "rpc_password"
+      prompt: "Enter a password for Transmission admin"
+      private: yes
+
   roles:
     - common
+    - transmission
+    - minidlna
