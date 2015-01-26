@@ -3,17 +3,20 @@
 
 - name: apply common configuration to all hosts
   hosts: all
-  connection: local
-  remote_user: pi
+  remote_user: "{{ user }}"
   sudo: yes
 
   vars_prompt:
+    - name: Enter your device's username
+      prompt: "user"
+      private: no
+
     - name: "rpc_username"
-      prompt: "Enter a username for Transmission admin"
+      prompt: Enter a username for Transmission web interface
       private: no
 
     - name: "rpc_password"
-      prompt: "Enter a password for Transmission admin"
+      prompt: Enter a password for Transmission web interface
       private: yes
 
   roles:
