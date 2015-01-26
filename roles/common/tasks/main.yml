@@ -6,4 +6,9 @@
 - name: create media directory
   file: path=/var/media state=directory mode=0775 group=media
 
+- name: install prerequisite packages
+  apt: name={{ item }} state=installed
+  with_items: 
+    - python-dev
+    - python-apt
 

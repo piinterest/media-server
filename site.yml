@@ -7,8 +7,8 @@
   sudo: yes
 
   vars_prompt:
-    - name: Enter your device's username
-      prompt: "user"
+    - name: "user"
+      prompt: Enter the username for your device
       private: no
 
     - name: "rpc_username"
