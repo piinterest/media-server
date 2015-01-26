@@ -1,3 +1,20 @@
 ---
+- name: install minidlna
+  apt: name=minidlna state=present update_cache=yes
 
+- name: add minidlna to media group
+  user: name=minidlna groups=media append=yes
 
+- name: stop minidlna before editing settings
+  service: name=minidlna state=stopped
+
+  #- name: copy transmission config into place
+  #  template: >
+  #            src=settings.json.j2
+  #            dest=/etc//transmission-daemon/settings.json
+  #            mode=0600 
+  #            group=debian-transmission
+  #            owner=debian-transmission
+
+- name: start minidlna back up
+  service: name=minidlna state=started
