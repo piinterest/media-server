@@ -8,13 +8,13 @@
 - name: stop minidlna before editing settings
   service: name=minidlna state=stopped
 
-  #- name: copy transmission config into place
-  #  template: >
-  #            src=settings.json.j2
-  #            dest=/etc//transmission-daemon/settings.json
-  #            mode=0600 
-  #            group=debian-transmission
-  #            owner=debian-transmission
+- name: copy minidlna config into place
+  template: >
+            src=minidlna.conf
+            dest=/etc/minidlna.conf
+            mode=0644 
+            group=minidlna
+            owner=minidlna
 
 - name: start minidlna back up
   service: name=minidlna state=started
